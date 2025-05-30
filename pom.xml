@@ -47,6 +47,13 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
+		
+		<!-- H2 Database for testing -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
 		<!-- HTTP Client -->
 		<dependency>
@@ -97,6 +104,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Google AI -->
+		<dependency>
+			<groupId>com.google.ai</groupId>
+			<artifactId>generativeai</artifactId>
+			<version>0.2.2</version>
 		</dependency>
 	</dependencies>
 

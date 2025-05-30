@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +19,13 @@ public class TwitchClip {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id; // Clip ID from Twitch
+    @JsonIgnore
+    private Long id;
+    
+    @JsonProperty("id")
+    @Column(unique = true, nullable = false)
+    private String clipId;
+    
     private String url;
     private String embedUrl;
     private String broadcasterId;
@@ -29,6 +37,7 @@ public class TwitchClip {
     private String gameName;
     private String language;
     private String title;
+    @JsonProperty("view_count")
     private Integer viewCount;
     private LocalDateTime createdAt = LocalDateTime.now();// Twitch's creation date for the clip
     private String thumbnailUrl;

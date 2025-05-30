@@ -1,5 +1,6 @@
 package com.joel.br.AutoClipster.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,12 @@ public class TwitchUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @JsonIgnore
+    private Long id;
+
+    @JsonProperty("id")
+    @Column(unique = true, nullable = false)
+    private String twitchId;
     private String login;
 
     @JsonProperty("display_name")

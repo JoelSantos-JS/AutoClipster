@@ -10,4 +10,8 @@ import java.util.List;
 public interface DownloadedClipRepository extends JpaRepository<DownloadedClip, Long> {
     List<DownloadedClip> findByProcessedFalse();
     List<DownloadedClip> findByClipId(String clipId);
+
+    long countByProcessedTrue();
+
+    long countByProcessedFalse();
 }

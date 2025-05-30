@@ -2,10 +2,12 @@
 package com.joel.br.AutoClipster.services;
 
 import com.joel.br.AutoClipster.DTO.TwitchClipDTO;
+import com.joel.br.AutoClipster.events.ClipDownloadedEvent;
 import com.joel.br.AutoClipster.model.DownloadedClip;
 import com.joel.br.AutoClipster.repository.DownloadedClipRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,7 @@ public class ClipDownloadService {
 
     private final DownloadedClipRepository downloadedClipRepository;
     private final ResourceLoader resourceLoader;
+    private final ApplicationEventPublisher eventPublisher;
     
     @Value("${app.clips.download-path:./downloads}")
     private String downloadPath;
@@ -43,9 +46,12 @@ public class ClipDownloadService {
     
     private String ytDlpPath;
 
-    public ClipDownloadService(DownloadedClipRepository downloadedClipRepository, ResourceLoader resourceLoader) {
+    public ClipDownloadService(DownloadedClipRepository downloadedClipRepository, 
+                              ResourceLoader resourceLoader,
+                              ApplicationEventPublisher eventPublisher) {
         this.downloadedClipRepository = downloadedClipRepository;
         this.resourceLoader = resourceLoader;
+        this.eventPublisher = eventPublisher;
     }
     
     @PostConstruct
@@ -222,6 +228,15 @@ public class ClipDownloadService {
             
             downloadedClipRepository.save(downloadedClip);
             log.info("Clip salvo no banco de dados: {}", clip.getTitle());
+
+            // Publicar evento ClipDownloadedEvent
+            ClipDownloadedEvent event = new ClipDownloadedEvent(
+                downloadedClip, 
+                LocalDateTime.now(), 
+                "DOWNLOAD_SERVICE"
+            );
+            eventPublisher.publishEvent(event);
+            log.info("📡 Evento ClipDownloadedEvent publicado para: {}", clip.getTitle());
         } else {
             throw new RuntimeException("Falha ao baixar clip: " + clip.getUrl());
         }

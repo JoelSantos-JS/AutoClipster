@@ -1,0 +1,123 @@
+{
+    "info": {
+        "name": "AutoClipster API",
+        "description": "Collection para testar todos os endpoints de automação do AutoClipster",
+        "version": "1.0.0"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080"
+        }
+    ],
+    "item": [
+        {
+            "name": "🚀 Execute Workflow - Single Channel",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"channelName\": \"gaules\",\n    \"clipLimit\": 5,\n    \"daysBack\": 3\n}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/api/automation/execute",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "automation", "execute"]
+                }
+            }
+        },
+        {
+            "name": "🔥 Execute Workflow - Multiple Channels",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"channelNames\": [\"gaules\", \"cellbit\", \"alanzoka\"],\n    \"clipLimitPerChannel\": 3,\n    \"daysBack\": 2\n}"
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/api/automation/execute-multiple",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "automation", "execute-multiple"]
+                }
+            }
+        },
+        {
+            "name": "📊 Get Automation Status",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/automation/status",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "automation", "status"]
+                }
+            }
+        },
+        {
+            "name": "🔄 Retry Failed Clips",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/automation/retry-failed",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "automation", "retry-failed"]
+                }
+            }
+        },
+        {
+            "name": "🧹 Cleanup Old Clips (Default 30 days)",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/automation/cleanup",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "automation", "cleanup"]
+                }
+            }
+        },
+        {
+            "name": "🧹 Cleanup Old Clips (Custom days)",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/automation/cleanup?daysToKeep=15",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "automation", "cleanup"],
+                    "query": [
+                        {
+                            "key": "daysToKeep",
+                            "value": "15"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "🧪 Test Automation",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{baseUrl}}/api/automation/test",
+                    "host": ["{{baseUrl}}"],
+                    "path": ["api", "automation", "test"]
+                }
+            }
+        }
+    ]
+} 

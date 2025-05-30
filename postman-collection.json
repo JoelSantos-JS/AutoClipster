@@ -1,0 +1,220 @@
+{
+  "info": {
+    "name": "AutoClipster - Gemini AI Endpoints",
+    "description": "Coleção completa para testar todos os endpoints do Gemini AI",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Teste Básico",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/gemini/test",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "gemini", "test"]
+        }
+      }
+    },
+    {
+      "name": "2. Análise Completa",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clipTitle\": \"GAULES ACERTA AWP IMPOSSÍVEL NO MIRAGE\",\n  \"clipDescription\": \"Gaules acerta um tiro de AWP impossível no meio da smoke, salvando o round decisivo\",\n  \"streamerName\": \"Gaules\",\n  \"gameName\": \"CS2\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/gemini/analyze",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "gemini", "analyze"]
+        }
+      }
+    },
+    {
+      "name": "3. Análise Assíncrona",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clipTitle\": \"LOUD ASPAS FAZ CLUTCH 1v5 IMPOSSÍVEL\",\n  \"clipDescription\": \"Aspas consegue clutch 1v5 na final do VCT Champions com jogadas impossíveis\",\n  \"streamerName\": \"loud_aspas\",\n  \"gameName\": \"Valorant\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/gemini/analyze-async",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "gemini", "analyze-async"]
+        }
+      }
+    },
+    {
+      "name": "4. Geração de Título",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"originalTitle\": \"clip legal do game\",\n  \"streamerName\": \"Gaules\",\n  \"gameName\": \"CS2\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/gemini/title",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "gemini", "title"]
+        }
+      }
+    },
+    {
+      "name": "5. Geração de Tags",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clipTitle\": \"GAULES ACERTA AWP IMPOSSÍVEL\",\n  \"streamerName\": \"Gaules\",\n  \"gameName\": \"CS2\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/gemini/tags",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "gemini", "tags"]
+        }
+      }
+    },
+    {
+      "name": "6. Análise de Sentimento",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clipTitle\": \"MELHOR JOGADA DA HISTÓRIA DO CS2\",\n  \"clipDescription\": \"Jogada absolutamente incrível que mudou o jogo completamente, todos ficaram chocados\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/gemini/sentiment",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "gemini", "sentiment"]
+        }
+      }
+    },
+    {
+      "name": "7. Function Calling Avançado",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clipTitle\": \"FALLEN FAZ ACE HISTÓRICO\",\n  \"clipDescription\": \"FalleN consegue um ace incrível no último round da final, decidindo o campeonato\",\n  \"streamerName\": \"FalleN\",\n  \"gameName\": \"CS2\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/gemini/analyze-advanced",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "gemini", "analyze-advanced"]
+        }
+      }
+    },
+    {
+      "name": "8. Streaming Analysis",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "text/event-stream"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clipTitle\": \"YUURIH CLUTCH IMPOSSÍVEL\",\n  \"clipDescription\": \"yuurih faz um clutch 1v4 impossível na semi-final do Major\",\n  \"streamerName\": \"yuurih\",\n  \"gameName\": \"CS2\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/gemini/analyze-stream",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "gemini", "analyze-stream"]
+        }
+      }
+    },
+    {
+      "name": "9. Análise Multimodal",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clipTitle\": \"SAADHAK IGL GENIUS PLAY\",\n  \"clipDescription\": \"Saadhak como IGL executa estratégia perfeita que surpreende todos\",\n  \"streamerName\": \"saadhak\",\n  \"gameName\": \"Valorant\",\n  \"thumbnailUri\": \"https://static-cdn.jtvnw.net/cf_vods/d1m7jfoe9zdc1j.cloudfront.net/thumbnails/thumb.jpg\",\n  \"mimeType\": \"image/jpeg\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/gemini/analyze-multimodal",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "gemini", "analyze-multimodal"]
+        }
+      }
+    },
+    {
+      "name": "10. Google Search Analysis",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clipTitle\": \"NOBRU FORTNITE BUILD FIGHT INSANO\",\n  \"clipDescription\": \"Nobru mostra suas skills de build no Fortnite com uma build fight épica\",\n  \"streamerName\": \"Nobru\",\n  \"gameName\": \"Fortnite\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/gemini/analyze-search",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "gemini", "analyze-search"]
+        }
+      }
+    }
+  ]
+} 
